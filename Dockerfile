@@ -1,11 +1,12 @@
-FROM python:3.13-slim
+FROM python:slim
 
 WORKDIR /app
 
-COPY . /app/
+COPY requirements.txt ./
 
-RUN pip install --upgrade pip \
-    && pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
 
 EXPOSE 8000
 
